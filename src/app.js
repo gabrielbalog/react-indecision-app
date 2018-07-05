@@ -18,26 +18,37 @@ const template = (
 </div>
 );
 
-function getLocation(location) {
-	if (location) {
-		return <p>Locatin: {location}</p>;
-	}
-}
+// class -> className
 
-const user = {
-	name: 'Gabriel Balog',
-	age: 21,
-	location: 'São Paulo'
+let count = 0;
+
+const addOne = () => {
+	console.log('addOne');
 };
 
+const minusOne = () => {
+	console.log('minusOne');
+};
+
+const reset = () => {
+	console.log('reset');
+};
+
+// Challenge
+
+// -- Challenge
+
 const templateTwo = (
-<div>
-	<h1>{user.name ? user.name : 'Anonymous'}</h1>
-	{(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-	{getLocation(user.location)}
-</div>
+	<div>
+		<h1>Count: {count}</h1>
+		<button onClick={addOne}>+1</button>
+		<button onClick={minusOne}>-1</button>
+		<button onClick={reset}>reset</button>
+	</div>
 );
+
+
 
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

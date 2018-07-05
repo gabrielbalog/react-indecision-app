@@ -1,4 +1,4 @@
-// default function
+// default function e anonima
 const square = function(x) {
 	return x * x;
 };
