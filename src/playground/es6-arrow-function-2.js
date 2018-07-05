@@ -1,5 +1,3 @@
-'use strict';
-
 // arguments object - no longer bound with arrow functions
 
 // A diferenca das duas funcoes abaixo e que nao se pode mais
@@ -7,13 +5,13 @@
 // isso limita os argumentos a serem lidos na funcao
 
 // ----- Funcao normal
-var add = function add(a, b) {
+const add = function(a, b) {
 	console.log(arguments);
 	return a + b;
 };
 
 // ----- Arrow Funcao
-var addArrow = function addArrow(a, b) {
+const addArrow = (a, b) => {
 	// console.log(arguments);
 	return a + b;
 };
@@ -24,15 +22,14 @@ console.log(addArrow(55, 1));
 // this keyword = no longer bound
 
 // ----- Funcao normal
-var user = {
+const user = {
 	name: 'Andrew',
-	cities: ['Philadelphia', 'New York', 'Dublin'],
+	cities: ['Philadelphia','New York', 'Dublin'],
 	// printPlacesLived: () => { // Nao funciona pois nao tem o contexto do 
-	// this, usa o contexto global
+		// this, usa o contexto global
 	// printPlacesLived: function () {
-	printPlacesLived: function printPlacesLived() {
-		// Funciona da mesma maneira mas sem a palavra function
-		var that = this; // necessario pois this nao pode ser
+	printPlacesLived() { // Funciona da mesma maneira mas sem a palavra function
+		const that = this; // necessario pois this nao pode ser
 		// usado dentro da funcao
 
 		this.cities.forEach(function (city) {
@@ -44,19 +41,15 @@ var user = {
 };
 
 // ----- Arrow Funcao
-var userArrow = {
+const userArrow = {
 	name: 'Andrew',
-	cities: ['Philadelphia', 'New York', 'Dublin'],
-	printPlacesLived: function printPlacesLived() {
-		var _this = this;
-
+	cities: ['Philadelphia','New York', 'Dublin'],
+	printPlacesLived() {
 		// A linha abaixo retorna uma lista identica a anterior mas com cada
 		// dado manipulado individualmente
 
-		return this.cities.map(function (city) {
-			return _this.name + ' has lived in ' + city;
-		});
-
+		return this.cities.map((city) => this.name +  ' has lived in ' + city);
+		
 		// this.cities.forEach((city) => {
 		// 	console.log(this.name + ' has lived in ' + city);
 		// });
@@ -68,15 +61,11 @@ console.log(userArrow.printPlacesLived());
 
 // Challenge Area
 
-var multiplier = {
-	'numbers': [1, 2, 3],
+const multiplier = {
+	'numbers': [1,2,3],
 	'multiplyBy': 2,
-	multiply: function multiply() {
-		var _this2 = this;
-
-		return this.numbers.map(function (number) {
-			return number * _this2.multiplyBy;
-		});
+	multiply() {
+		return this.numbers.map((number) => number * this.multiplyBy);
 	}
 };
 
