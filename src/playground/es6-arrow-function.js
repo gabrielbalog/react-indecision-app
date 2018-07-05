@@ -1,7 +1,5 @@
-'use strict';
-
 // default function
-var square = function square(x) {
+const square = function(x) {
 	return x * x;
 };
 
@@ -18,12 +16,10 @@ var square = function square(x) {
 
 // O mesmo que a funcao acima, mas calculos que sao uma linha
 // de retorno podem ser usados como abaixo
-var squareArrow = function squareArrow(x) {
-	return x * x;
-};
+const squareArrow = (x) => x * x;
 
-console.log(square(4));
-console.log(squareArrow(8));
+console.log(square(4))
+console.log(squareArrow(8))
 
 // Challenge - Use arrow functions
 
@@ -31,8 +27,6 @@ console.log(squareArrow(8));
 // 	return name.split(' ')[0];
 // };
 
-var getFirstName = function getFirstName(name) {
-	return name.split(' ')[0];
-};
+const getFirstName = (name) => name.split(' ')[0];
 
 console.log(getFirstName('Gabriel Balog'));
