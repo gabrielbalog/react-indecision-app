@@ -28,7 +28,7 @@ const renderVisibityToggle = () => {
 		<div>
 			<h1>Visibility Toogle</h1>
 			<button onClick={onClickButton}>
-				{toogle ? Hide Details : Show Details}
+				{toogle ? 'Hide Details' : 'Show Details'}
 			</button> 
 			
 			{toogle && <p>Hey. These are some details in can now see</p>}
