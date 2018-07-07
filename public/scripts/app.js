@@ -105,16 +105,23 @@ var Action = function (_React$Component3) {
 var Options = function (_React$Component4) {
 	_inherits(Options, _React$Component4);
 
-	function Options() {
+	// As funcoes que sao passadas para os eventos nao conseguem acessar o contexto
+	// O constructor aparece para definir a funcao utilizando a funcao bind
+	// O bind forca um contexto para a funcao que estamos chamando
+	function Options(props) {
 		_classCallCheck(this, Options);
 
-		return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+		var _this4 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+		_this4.handleRemoveAll = _this4.handleRemoveAll.bind(_this4);
+		return _this4;
 	}
 
 	_createClass(Options, [{
 		key: 'handleRemoveAll',
 		value: function handleRemoveAll() {
-			alert('my message');
+			console.log(this.props.options);
+			// alert('my message')
 		}
 	}, {
 		key: 'render',

@@ -40,8 +40,16 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+	// As funcoes que sao passadas para os eventos nao conseguem acessar o contexto
+	// O constructor aparece para definir a funcao utilizando a funcao bind
+	// O bind forca um contexto para a funcao que estamos chamando
+	constructor(props) {
+		super(props);
+		this.handleRemoveAll = this.handleRemoveAll.bind(this)
+	}
 	handleRemoveAll() {
-		alert('my message')
+		console.log(this.props.options)
+		// alert('my message')
 	}
 	render() {
 		return (
