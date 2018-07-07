@@ -1,36 +1,70 @@
-// class -> className
+class Counter extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleAddOne = this.handleAddOne.bind(this);
+		this.handleMinusOne = this.handleMinusOne.bind(this);
+		this.handleReset = this.handleReset.bind(this);
+	}
 
-let count = 0;
+	handleAddOne() {
+		console.log('handleAddOne');
+	}
 
-const addOne = () => {
-	count++;
-	renderCounterApp();
-};
+	handleMinusOne() {
+		console.log('handleMinusOne');
+	}
 
-// Challenge
-const minusOne = () => {
-	count--;
-	renderCounterApp();
-};
-
-const reset = () => {
-	count = 0; 
-	renderCounterApp();
-};
-// -- Challenge
-
-const appRoot = document.getElementById('app');
-
-const renderCounterApp = () => {
-	const templateTwo = (
-		<div>
-		<h1>Count: {count}</h1>
-		<button onClick={addOne}>+1</button>
-		<button onClick={minusOne}>-1</button>
-		<button onClick={reset}>reset</button>
-		</div>
+	handleReset() {
+		console.log('handleReset');
+	}
+	render() {
+		return (
+			<div>
+				<h1>Counter: </h1>
+				<button onClick={this.handleAddOne}>+1</button>
+				<button onClick={this.handleMinusOne}>-1</button>
+				<button onClick={this.handleReset}>reset</button>
+			</div>
 		);
-	ReactDOM.render(templateTwo, appRoot);
-};
+	}
+}
 
-renderCounterApp();
+ReactDOM.render(<Counter />,document.getElementById('app'))
+
+
+// // class -> className
+
+// let count = 0;
+
+// const addOne = () => {
+// 	count++;
+// 	renderCounterApp();
+// };
+
+// // Challenge
+// const minusOne = () => {
+// 	count--;
+// 	renderCounterApp();
+// };
+
+// const reset = () => {
+// 	count = 0; 
+// 	renderCounterApp();
+// };
+// // -- Challenge
+
+// const appRoot = document.getElementById('app');
+
+// const renderCounterApp = () => {
+// 	const templateTwo = (
+// 		<div>
+// 		<h1>Count: {count}</h1>
+// 		<button onClick={addOne}>+1</button>
+// 		<button onClick={minusOne}>-1</button>
+// 		<button onClick={reset}>reset</button>
+// 		</div>
+// 		);
+// 	ReactDOM.render(templateTwo, appRoot);
+// };
+
+// renderCounterApp();
