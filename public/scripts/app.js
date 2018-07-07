@@ -1,52 +1,36 @@
 'use strict';
 
-var toogle = void 0;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-// const onClickButton = () => {
-// 	if (toogle) {
-// 		toogle = false;
-// 	} else {
-// 		toogle = true;
-// 	}
-// 	renderVisibityToggle();
-// };
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var onClickButton = function onClickButton() {
-	toogle = !toogle;
-	renderVisibityToggle();
-};
+var Person = function () {
+	function Person() {
+		var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+		var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-var appRoot = document.getElementById('app');
+		_classCallCheck(this, Person);
 
-// Meu codigo original abaixo
-// {
-// 	toogle ? 
-// 	<button onClick={onClickButton}>Hide Details</button> 
-// 	: <button onClick={onClickButton}>Show Details</button>
-// }
+		this.name = name, this.age = age;
+	}
 
-var renderVisibityToggle = function renderVisibityToggle() {
-	var template = React.createElement(
-		'div',
-		null,
-		React.createElement(
-			'h1',
-			null,
-			'Visibility Toogle'
-		),
-		React.createElement(
-			'button',
-			{ onClick: onClickButton },
-			toogle ? 'Hide Details' : 'Show Details'
-		),
-		toogle && React.createElement(
-			'p',
-			null,
-			'Hey. These are some details in can now see'
-		)
-	);
+	_createClass(Person, [{
+		key: 'getGreetings',
+		value: function getGreetings() {
+			return 'Hi. I am ' + this.name + '!';
+		}
+	}, {
+		key: 'getDescription',
+		value: function getDescription() {
+			return this.name + ' is ' + this.age + ' year(s) old.';
+		}
+	}]);
 
-	ReactDOM.render(template, appRoot);
-};
+	return Person;
+}();
 
-renderVisibityToggle();
+var me = new Person('Gabriel Balog', 21);
+console.log(me.getDescription());
+
+var other = new Person();
+console.log(other.getDescription());
