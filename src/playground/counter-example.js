@@ -10,17 +10,17 @@ class Counter extends React.Component {
 	}
 
 	handleAddOne() {
-		this.setState((previousState) => {
+		this.setState((prevState) => {
 			return {
-				count: previousState.count + 1
+				count: prevState.count + 1
 			};
 		});
 	}
 
 	handleMinusOne() {
-		this.setState((previousState) => {
+		this.setState((prevState) => {
 			return {
-				count: previousState.count - 1
+				count: prevState.count - 1
 			};
 		});
 	}
@@ -31,6 +31,30 @@ class Counter extends React.Component {
 				count: 0
 			};
 		});
+
+		// this.setState((prevState) => {
+		// 	return {
+		// 		count: prevState + 1
+		// 	};
+		// });
+
+		// A chamada abaixo tambem pode ser utilizada
+		// Mas ha uma limitacao de voce pegar um valor antigo
+		// A forma como eh utilizada abaixo eh assincrona
+		// Logo o resultado esperado era count: 1
+		// Mas por conta da assincronia o valor antigo eh
+		// o que estava no estagio anterior, ex.: o valor
+		// era 15, com o codigo abaixo ao inves de setar para 1
+		// ele seta pra 16
+		// A funcoes acima em conjunto com a funcao anterior
+		// faz o precisamos, define o valor como 1, pois e
+		// assincrona a chamada
+		// this.setState({
+		// 	count: 0
+		// })
+		// this.setState({
+		// 	count: this.state.count + 1
+		// })
 	}
 
 	render() {
