@@ -8,73 +8,29 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Counter = function (_React$Component) {
-	_inherits(Counter, _React$Component);
+var VisibilityToogle = function (_React$Component) {
+	_inherits(VisibilityToogle, _React$Component);
 
-	function Counter(props) {
-		_classCallCheck(this, Counter);
+	function VisibilityToogle(props) {
+		_classCallCheck(this, VisibilityToogle);
 
-		var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (VisibilityToogle.__proto__ || Object.getPrototypeOf(VisibilityToogle)).call(this, props));
 
-		_this.handleAddOne = _this.handleAddOne.bind(_this);
-		_this.handleMinusOne = _this.handleMinusOne.bind(_this);
-		_this.handleReset = _this.handleReset.bind(_this);
+		_this.handleToogleVisiblity = _this.handleToogleVisiblity.bind(_this);
 		_this.state = {
-			count: 0
+			visibility: false
 		};
 		return _this;
 	}
 
-	_createClass(Counter, [{
-		key: 'handleAddOne',
-		value: function handleAddOne() {
+	_createClass(VisibilityToogle, [{
+		key: 'handleToogleVisiblity',
+		value: function handleToogleVisiblity() {
 			this.setState(function (prevState) {
 				return {
-					count: prevState.count + 1
+					visibility: !prevState.visibility
 				};
 			});
-		}
-	}, {
-		key: 'handleMinusOne',
-		value: function handleMinusOne() {
-			this.setState(function (prevState) {
-				return {
-					count: prevState.count - 1
-				};
-			});
-		}
-	}, {
-		key: 'handleReset',
-		value: function handleReset() {
-			this.setState(function () {
-				return {
-					count: 0
-				};
-			});
-
-			// this.setState((prevState) => {
-			// 	return {
-			// 		count: prevState + 1
-			// 	};
-			// });
-
-			// A chamada abaixo tambem pode ser utilizada
-			// Mas ha uma limitacao de voce pegar um valor antigo
-			// A forma como eh utilizada abaixo eh assincrona
-			// Logo o resultado esperado era count: 1
-			// Mas por conta da assincronia o valor antigo eh
-			// o que estava no estagio anterior, ex.: o valor
-			// era 15, com o codigo abaixo ao inves de setar para 1
-			// ele seta pra 16
-			// A funcoes acima em conjunto com a funcao anterior
-			// faz o precisamos, define o valor como 1, pois e
-			// assincrona a chamada
-			// this.setState({
-			// 	count: 0
-			// })
-			// this.setState({
-			// 	count: this.state.count + 1
-			// })
 		}
 	}, {
 		key: 'render',
@@ -85,66 +41,66 @@ var Counter = function (_React$Component) {
 				React.createElement(
 					'h1',
 					null,
-					'Counter: ',
-					this.state.count
+					'Visibility Toogle'
 				),
 				React.createElement(
 					'button',
-					{ onClick: this.handleAddOne },
-					'+1'
+					{ onClick: this.handleToogleVisiblity },
+					this.state.visibility ? 'Hide Details' : 'Show Details'
 				),
-				React.createElement(
-					'button',
-					{ onClick: this.handleMinusOne },
-					'-1'
-				),
-				React.createElement(
-					'button',
-					{ onClick: this.handleReset },
-					'reset'
+				this.state.visibility && React.createElement(
+					'p',
+					null,
+					'Hey. These are some details in can now see'
 				)
 			);
 		}
 	}]);
 
-	return Counter;
+	return VisibilityToogle;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(VisibilityToogle, null), document.getElementById('app'));
 
-// // class -> className
+// let toogle;
 
-// let count = 0;
+// // const onClickButton = () => {
+// // 	if (toogle) {
+// // 		toogle = false;
+// // 	} else {
+// // 		toogle = true;
+// // 	}
+// // 	renderVisibityToggle();
+// // };
 
-// const addOne = () => {
-// 	count++;
-// 	renderCounterApp();
+// const onClickButton = () => {
+// 	toogle = !toogle;
+// 	renderVisibityToggle();
 // };
-
-// // Challenge
-// const minusOne = () => {
-// 	count--;
-// 	renderCounterApp();
-// };
-
-// const reset = () => {
-// 	count = 0; 
-// 	renderCounterApp();
-// };
-// // -- Challenge
 
 // const appRoot = document.getElementById('app');
 
-// const renderCounterApp = () => {
-// 	const templateTwo = (
+// // Meu codigo original abaixo
+// // {
+// // 	toogle ? 
+// // 	<button onClick={onClickButton}>Hide Details</button> 
+// // 	: <button onClick={onClickButton}>Show Details</button>
+// // }
+
+// const renderVisibityToggle = () => {
+// 	const template = (
 // 		<div>
-// 		<h1>Count: {count}</h1>
-// 		<button onClick={addOne}>+1</button>
-// 		<button onClick={minusOne}>-1</button>
-// 		<button onClick={reset}>reset</button>
+// 			<h1>Visibility Toogle</h1>
+// 			<button onClick={onClickButton}>
+// 				{toogle ? 'Hide Details' : 'Show Details'}
+// 			</button> 
+
+// 			{toogle && <p>Hey. These are some details in can now see</p>}
 // 		</div>
-// 		);
-// 	ReactDOM.render(templateTwo, appRoot);
+// 	);
+
+// 	ReactDOM.render(template, appRoot);
+
 // };
 
-// renderCounterApp();
+// renderVisibityToggle();
