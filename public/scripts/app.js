@@ -33,7 +33,19 @@ var IndecisionApp = function (_React$Component) {
 	_createClass(IndecisionApp, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			console.log('componentDidMount');
+			try {
+				var json = localStorage.getItem('options');
+				var options = JSON.parse(json);
+
+				if (options) {
+					this.setState(function () {
+						return { options: options };
+					});
+				}
+			} catch (e) {
+				// statements
+				console.log(e);
+			}
 		}
 
 		// Apos atualizar algum valor ele chama a funcao abaixo
@@ -41,7 +53,10 @@ var IndecisionApp = function (_React$Component) {
 	}, {
 		key: 'componentDidUpdate',
 		value: function componentDidUpdate(prevProps, prevState) {
-			console.log('componentDidUpdate');
+			if (prevState.options.length !== this.state.options.length) {
+				var json = JSON.stringify(this.state.options);
+				localStorage.setItem('options', json);
+			}
 		}
 
 		// Ao sair de uma pagina para outra ele chama a funcao abaixo
@@ -167,6 +182,11 @@ var Options = function Options(props) {
 			{ onClick: props.handleDeleteOptions },
 			'Remove All'
 		),
+		props.options.length === 0 && React.createElement(
+			'p',
+			null,
+			'Please add an option to get started'
+		),
 		props.options.map(function (option) {
 			return React.createElement(Option, {
 				key: option,
@@ -216,9 +236,13 @@ var AddOption = function (_React$Component2) {
 			var option = e.target.elements.option.value.trim();
 			var error = this.props.handleAddOption(option);
 
-			this.setState(function (prevState) {
+			this.setState(function () {
 				return { error: error };
 			});
+
+			if (!error) {
+				e.target.elements.option.value = '';
+			}
 		}
 	}, {
 		key: 'render',
