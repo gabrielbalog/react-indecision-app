@@ -26,7 +26,32 @@ var IndecisionApp = function (_React$Component) {
 		return _this;
 	}
 
+	// Lifecycles Methods
+	// Apos renderizar o component ele chama a funcao abaixo
+
+
 	_createClass(IndecisionApp, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			console.log('componentDidMount');
+		}
+
+		// Apos atualizar algum valor ele chama a funcao abaixo
+
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate(prevProps, prevState) {
+			console.log('componentDidUpdate');
+		}
+
+		// Ao sair de uma pagina para outra ele chama a funcao abaixo
+
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			console.log('componentWillUnmount');
+		}
+	}, {
 		key: 'handleDeleteOptions',
 		value: function handleDeleteOptions() {
 			// ({}) significa retorna um objeto

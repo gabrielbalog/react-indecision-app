@@ -10,6 +10,22 @@ class IndecisionApp extends React.Component {
 		}
 	}
 
+	// Lifecycles Methods
+	// Apos renderizar o component ele chama a funcao abaixo
+	componentDidMount() {
+		console.log('componentDidMount');
+	}
+
+	// Apos atualizar algum valor ele chama a funcao abaixo
+	componentDidUpdate(prevProps, prevState) {
+		console.log('componentDidUpdate');
+	}
+
+	// Ao sair de uma pagina para outra ele chama a funcao abaixo
+	componentWillUnmount() {
+		console.log('componentWillUnmount');
+	}
+
 	handleDeleteOptions() {
 		// ({}) significa retorna um objeto
 		this.setState(() => ({ options: [] }));
