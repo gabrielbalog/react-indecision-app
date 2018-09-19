@@ -10,6 +10,19 @@ O App pode ser testado em http://balog-indecision-app.surge.sh/
 
 
 
+## Funcionalidades
+
+Abaixo se encontra a lista de funcionalidades do App:
+
+- [x] Armazenamento no browser dos dados
+- [x] Não requere login
+- [x] Botão para remoção de todas as opções
+- [x] Botão para remoção de opção individual
+- [x] Não permissão de adicionar nova opção vazia
+- [ ] Seleção de idioma
+
+
+
 ## Modo de usar
 
 Para utilizar deste repositório, basta clona-lo e rodar os seguintes comandos dentro da pasta:
